@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Support Request App</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-light">
+  <div class="outer-wrapper">
+    <div class="container">
+      <div class="shadow-box p-5 rounded bg-white">
+        <h2>Login to Support Portal</h2>
+        <div class="mb-3">
+          <input type="text" id="username" class="form-control mb-2" placeholder="Username" />
+          <input type="password" id="password" class="form-control mb-2" placeholder="Password" />
+          <button class="btn btn-primary" onclick="login()">Login</button>
+        </div>
+        <p id="greeting" class="fw-bold text-success" style="display: none;"></p>
+        <p id="error-message" class="text-danger"></p>
+
+        <hr />
+
+        <h2>Submit a Support Ticket</h2>
+        <div class="mb-3">
+          <label for="ticketType" class="form-label">Type of Issue:</label>
+          <select id="ticketType" class="form-select" onchange="displayFields()">
+            <option value="">--Select--</option>
+            <option value="computer">Computer</option>
+            <option value="software">Software</option>
+            <option value="network">Network</option>
+          </select>
+        </div>
+
+        <div id="computerFields" class="mb-3" style="display: none;">
+          <label class="form-label">Computer Serial Number:</label>
+          <input type="text" class="form-control" />
+        </div>
+
+        <div id="softwareFields" class="mb-3" style="display: none;">
+          <label class="form-label">Software Name:</label>
+          <input type="text" class="form-control" />
+        </div>
+
+        <div id="networkFields" class="mb-3" style="display: none;">
+          <label class="form-label">Network Location:</label>
+          <input type="text" class="form-control" />
+        </div>
+
+        <form onsubmit="return submitTicket()">
+          <input type="hidden" id="timestamp" name="timestamp" />
+          <button type="submit" class="btn btn-success">Submit Ticket</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
